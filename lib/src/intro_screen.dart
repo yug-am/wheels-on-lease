@@ -8,11 +8,11 @@ class IntroScreen extends StatefulWidget {
 }
 
 class IntroScreenState extends State<IntroScreen> {
-  TextStyle _textStyle() {
+  TextStyle textStyle() {
     return TextStyle(color: Colors.black, fontSize: 20.0);
   }
 
-  TextStyle _textStyleHeadline() {
+  TextStyle textStyleHeadline() {
     return TextStyle(
         color: Colors.black, fontSize: 30.0, fontWeight: FontWeight.bold);
   }
@@ -26,9 +26,9 @@ class IntroScreenState extends State<IntroScreen> {
     slides.add(
       Slide(
         title: "SELECT IT",
-        styleTitle: _textStyleHeadline(),
+        styleTitle: textStyleHeadline(),
         description: "Select from rides near you.",
-        styleDescription: _textStyle(),
+        styleDescription: textStyle(),
         pathImage: "assets/order_a_car.png",
         backgroundColor: Colors.white,
       ),
@@ -36,9 +36,9 @@ class IntroScreenState extends State<IntroScreen> {
     slides.add(
       Slide(
         title: "LEASE IT",
-        styleTitle: _textStyleHeadline(),
+        styleTitle: textStyleHeadline(),
         description: "Lease vehicles at an affordable rate .",
-        styleDescription: _textStyle(),
+        styleDescription: textStyle(),
         pathImage: "assets/fast_car.png",
         backgroundColor: Colors.white,
       ),
@@ -46,9 +46,9 @@ class IntroScreenState extends State<IntroScreen> {
     slides.add(
       Slide(
         title: "RIDE IT",
-        styleTitle: _textStyleHeadline(),
+        styleTitle: textStyleHeadline(),
         description: "Ride with freedom .",
-        styleDescription: _textStyle(),
+        styleDescription: textStyle(),
         pathImage: "assets/navigator.png",
         backgroundColor: Colors.white,
       ),
