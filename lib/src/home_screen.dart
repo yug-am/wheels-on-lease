@@ -42,9 +42,13 @@ class HomeScreen extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(bottom: 10.0),
                     child: Center(
-                      child: customHomeScreenButton(function: () {
-                        _navFunc(context);
-                      }),
+                      child: customHomeScreenButton(
+                        isHomeScreen: true,
+                        buttonText: "Get Started",
+                        function: () {
+                          _navFunc(context);
+                        },
+                      ),
                     ),
                   ),
                   Padding(

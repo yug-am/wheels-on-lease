@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "27232513531",
+    "firebase_url": "https://wheels-on-lease.firebaseio.com",
+    "project_id": "wheels-on-lease",
+    "storage_bucket": "wheels-on-lease.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:27232513531:android:37cbd2655952f990cfef5e",
+        "android_client_info": {
+          "package_name": "com.example.wheels_on_lease"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "27232513531-b10scqr18a56a510cpp8g2hbhhjgam2c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wheels_on_lease",
+            "certificate_hash": "29eb3d26c90d87d77c056d37fb9faf713b5aeebb"
+          }
+        },
+        {
+          "client_id": "27232513531-pel3rus7jjfvc0h36502vvnbkcvsu23n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUDN096XzV51S_K2FWPm3X38fabj1dXG8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "27232513531-pel3rus7jjfvc0h36502vvnbkcvsu23n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

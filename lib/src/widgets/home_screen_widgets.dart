@@ -11,16 +11,22 @@ const LinearGradient kLinearGradient = LinearGradient(
   begin: Alignment.topCenter,
   end: Alignment.bottomCenter,
 );
-RaisedButton customHomeScreenButton({Function function}) {
+RaisedButton customHomeScreenButton(
+    {Function function, String buttonText, bool isHomeScreen = false}) {
   return RaisedButton(
-    shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(40.0)),
-    color: Colors.white,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40.0)),
+    color: (isHomeScreen) ? Colors.white : kBlueColor,
     onPressed: function,
     child: Padding(
-      padding: EdgeInsets.symmetric(horizontal: 70.0,vertical: 16.0),
+      padding: (isHomeScreen)
+          ? EdgeInsets.symmetric(horizontal: 70.0, vertical: 16.0)
+          : EdgeInsets.symmetric(
+              vertical: 16.0,
+              horizontal: 10.0,
+            ),
       child: Text(
-        "Get Started",
-        style: TextStyle(fontSize: 20.0,fontWeight: FontWeight.w300),
+        buttonText,
+        style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w300),
         textAlign: TextAlign.center,
       ),
     ),
@@ -33,11 +39,12 @@ Padding customHomeScreenText() {
     child: RichText(
       text: TextSpan(
         text: "Already have an account?",
-        style: TextStyle(color:Colors.black),
+        style: TextStyle(color: Colors.black),
         children: [
           TextSpan(
               text: ' Log in',
-              style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
                   print('login tapped');
