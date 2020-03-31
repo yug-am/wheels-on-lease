@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:wheels_on_lease/src/profile.dart';
 import 'package:wheels_on_lease/src/widgets/auth_init_screen_widgets.dart';
 import 'package:wheels_on_lease/src/widgets/home_screen_widgets.dart';
 
@@ -74,14 +75,15 @@ class SigninState extends State<Signin> {
                             email: _emailController.text,
                             pass: _passController.text,
                             context: context);
+                            String userEmail =_user.email;
                         print(_user.email);
                         print('success');
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => MainScreen(_user),
-                        //   ),
-                        // );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Profile(customerEmail: userEmail,),
+                          ),
+                        );
                       }
                     }),
               )

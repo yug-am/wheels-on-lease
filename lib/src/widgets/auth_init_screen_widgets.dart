@@ -48,7 +48,7 @@ String passValidatorFunction(String value) {
   if (value.isEmpty) {
     return 'Please enter some text';
   } else if (value.length < 6) {
-    return 'should be greater than 6 chararcters';
+    return 'should be greater than 6 characters';
   }
   return null;
 }
@@ -58,13 +58,15 @@ TextFormField userField(
     @required String hintText,
     bool isObscure = false,
      @required TextEditingController textEditingController,
-    Function validatorFunction}) {
+    Function validatorFunction,
+    TextInputType keyboardType = TextInputType.emailAddress,
+    }) {
   return TextFormField(
     //controller: textEditingController,
     validator: (String value) => validatorFunction(value),
     controller: textEditingController,
     obscureText: isObscure,
-    keyboardType: TextInputType.emailAddress,
+    keyboardType: keyboardType,
     decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextStyle(fontSize: 20.0),

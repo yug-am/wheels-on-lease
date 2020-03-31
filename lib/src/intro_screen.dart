@@ -8,7 +8,7 @@ class IntroScreen extends StatefulWidget {
 }
 
 class IntroScreenState extends State<IntroScreen> {
-  TextStyle textStyle() {
+  static TextStyle textStyle() {
     return TextStyle(color: Colors.black, fontSize: 20.0);
   }
 

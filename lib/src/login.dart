@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:wheels_on_lease/src/widgets/auth_init_screen_widgets.dart';
 import 'package:wheels_on_lease/src/widgets/home_screen_widgets.dart';
-
+ TextStyle textStyle() {
+    return TextStyle(color: Colors.black, fontSize: 20.0);
+  }
 class Login extends StatefulWidget {
   LoginState createState() => LoginState();
 }

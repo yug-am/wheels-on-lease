@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wheels_on_lease/src/widgets/home_screen_widgets.dart';
+//import 'package:cached_network_image/cached_network_image.dart';
 
 const double fontSize = 20;
 TextStyle customTextStyle({bool isBold = false}) {
@@ -16,30 +17,31 @@ TextStyle customTextStyleHeadline() {
       fontWeight: FontWeight.bold);
 }
 
-CircleAvatar customAvatar({double radius}) {
+CircleAvatar customAvatar(
+    {@required double radius, String imageUrl,String gender}) {
   return CircleAvatar(
     radius: (radius + 3),
-    backgroundColor: Colors.black, //change to white
+    backgroundColor: Colors.white,
     child: CircleAvatar(
       radius: radius,
-      backgroundImage: AssetImage('assets/avatar.png'),
+      child: Image.asset('assets/gender/$gender.png'),
     ),
   );
 }
 
-IconButton searchIcon({double size}) {
+IconButton searchIcon({@required double size, @required Function function}) {
   return IconButton(
       icon: Icon(
         Icons.search,
         color: Colors.black,
         size: size,
       ),
-      onPressed: () => print('tap on search'));
+      onPressed: function);
 }
 
-Text customHeadText() {
+Text customHeadText({@required String username}) {
   return Text(
-    "Hello UI ,",
+    "Hello $username,",
     style: customTextStyleHeadline(),
   );
 }
@@ -64,7 +66,8 @@ Column mainTextColumn({Text heading, Text subText}) {
   );
 }
 
-Container customDateTempStack() {
+Container customDateTempStack(
+    {String date, String temp, String status, String cityName, String icon}) {
   double containerHeight = 140.0;
   return Container(
     height: containerHeight,
@@ -84,16 +87,22 @@ Container customDateTempStack() {
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.only(
-                      top: containerHeight / 10,
+                      top: containerHeight / 40,
                       left: containerHeight / 7,
                     ),
-                    child: Icon(
-                      Icons.wb_sunny,
-                      color: Colors.yellow,
-                      size: containerHeight / 2,
+                    child: Image.asset(
+                      'assets/$icon.png',
+                      height: containerHeight / 2,
+                      width: containerHeight / 2,
                     ),
+                    // child: Icon(
+                    //   Icons.wb_sunny,
+                    //   color: Colors.yellow,
+                    //   size: containerHeight / 2,
+                    // ),
                   ),
-                  customTempText(),
+                  customTempText(
+                      temp: temp, cityName: cityName, status: status),
                 ],
               ),
             )),
@@ -107,8 +116,8 @@ Container customDateTempStack() {
                 color: Colors.white,
               ),
               height: (containerHeight) / 4,
-              child: Text( 
-                "29 March, Sunday",
+              child: Text(
+                date,
                 style: TextStyle(fontSize: fontSize),
                 textAlign: TextAlign.center,
               ),
@@ -120,26 +129,26 @@ Container customDateTempStack() {
   );
 }
 
-Padding customTempText() {
+Padding customTempText({String temp, String status, String cityName}) {
   return Padding(
     padding: EdgeInsets.all(10.0),
     child: RichText(
       text: TextSpan(
-        text: "18° ",
+        text: "$temp° ",
         style: TextStyle(
           color: Colors.black,
           fontSize: (fontSize + 20),
         ),
         children: [
           TextSpan(
-            text: 'Cloudy\n',
+            text: '$status\n',
             style: TextStyle(
               fontSize: fontSize,
               color: Colors.black,
             ),
             children: [
               TextSpan(
-                text: '  New Delhi\n',
+                text: cityName,
                 style: TextStyle(
                   fontSize: fontSize,
                   color: Colors.black,
@@ -153,7 +162,7 @@ Padding customTempText() {
   );
 }
 
-Row browseText() {
+Row browseText({@required Function function}) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: <Widget>[
@@ -162,7 +171,7 @@ Row browseText() {
         style: customTextStyle(isBold: true),
       ),
       InkWell(
-          onTap: () => print("tapped"),
+          onTap: function,
           child: Text(
             "Browse Map >",
             style: customTextStyle(),
@@ -174,7 +183,7 @@ Row browseText() {
 Container vehicleCard() {
   double containerHeight = 210.0;
   return Container(
-    width: containerHeight*(1.1),
+    width: containerHeight * (1.1),
     height: containerHeight,
     child: Stack(
       children: <Widget>[
@@ -197,7 +206,7 @@ Container vehicleCard() {
                     child: Center(
                       child: Image.asset(
                         'assets/vehicle.png',
-                        height: containerHeight *(0.75),
+                        height: containerHeight * (0.75),
                         width: containerHeight * (1),
                       ),
                     ),
