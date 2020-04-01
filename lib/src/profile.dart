@@ -2,30 +2,32 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:wheels_on_lease/src/hide/hide.dart';
-import '../src/intro_screen.dart';
+//import '../src/intro_screen.dart';
 import 'package:wheels_on_lease/src/widgets/auth_init_screen_widgets.dart';
 import 'package:wheels_on_lease/src/widgets/home_screen_widgets.dart';
-import 'package:wheels_on_lease/src/widgets/main_screen_widgets.dart';
+//import 'package:wheels_on_lease/src/widgets/main_screen_widgets.dart';
 import 'package:wheels_on_lease/src/widgets/profile_widgets.dart';
 
 import 'login.dart';
 import 'main_screen.dart';
+import 'methods/weather.dart';
 import 'model/user_data_model.dart';
 
 class Profile extends StatefulWidget {
-  String customerEmail;
   Profile({this.customerEmail});
+  final String customerEmail;
   ProfileState createState() => ProfileState(customerEmail);
 }
 
 class ProfileState extends State<Profile> {
+  List<String> weatherData;
   String customerEmail;
   ProfileState(this.customerEmail);
   Customer customer;
   DocumentSnapshot documentSnapshot;
   String selectedGender = "Female";
   final _formKey = GlobalKey<FormState>();
-  static const List<String> cities = ['Delhi', 'Mumbai', 'Chennai', 'Banglore'];
+  static const List<String> cities = ['Delhi', 'Mumbai', 'Chennai', 'Kolkata'];
   TextEditingController _nameController = TextEditingController();
   TextEditingController _ageController = TextEditingController();
   userLogin({String email, String pass, BuildContext context}) {
@@ -136,16 +138,21 @@ class ProfileState extends State<Profile> {
                               "email": customerEmail,
                             },
                           );
-                           documentSnapshot =
+
+                          documentSnapshot =
                               await userRecord.document(customerEmail).get();
-                              customer = Customer.fromDocument(documentSnapshot);
-                              print(customer.gender);
-                          
+                          customer = Customer.fromDocument(documentSnapshot);
+                          print(customer.gender);
+                          weatherData =
+                              await currentWeather(cityName: customer.city);
 
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => MainScreen(customer:customer),
+                              builder: (context) => MainScreen(
+                                customer: customer,
+                                weatherData: weatherData,
+                              ),
                             ),
                           );
                         }

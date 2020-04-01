@@ -1,5 +1,6 @@
 #private ignore
 lib/src/hide/
+lib/src/private/
 # Miscellaneous
 *.class
 *.log

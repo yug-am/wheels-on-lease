@@ -75,13 +75,15 @@ class SigninState extends State<Signin> {
                             email: _emailController.text,
                             pass: _passController.text,
                             context: context);
-                            String userEmail =_user.email;
+                        String userEmail = _user.email;
                         print(_user.email);
                         print('success');
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Profile(customerEmail: userEmail,),
+                            builder: (context) => Profile(
+                              customerEmail: userEmail,
+                            ),
                           ),
                         );
                       }

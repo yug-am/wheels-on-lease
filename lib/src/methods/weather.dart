@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../hide/hide.dart';
-String api = apiKey;
-Future<List<String>> currentWeather({ String cityName="Delhi"}) async {
 
-  List<String>weatherData=["30","cloudy","clouds"];
+String api = apiKey;
+Future<List<String>> currentWeather({String cityName = "Delhi"}) async {
+  List<String> weatherData = ["30", "cloudy", "clouds"];
   http.Response httpResponse;
 
   httpResponse = await http.get(
@@ -16,37 +16,31 @@ Future<List<String>> currentWeather({ String cityName="Delhi"}) async {
     Map<String, dynamic> weatherMap = await jsonDecode(rawJson);
     String temp = (((weatherMap['main']['temp']) - 273.15).round()).toString();
     String weatherStatus = weatherMap["weather"][0]["main"];
-    int status = weatherMap['cod'];
-    String iconLabel = weatherIcon(status); 
-    weatherData = [temp,weatherStatus,iconLabel];
+    //int status = weatherMap['cod'];
+    String cod = weatherMap["weather"][0]["icon"];
+    weatherData = [temp, weatherStatus, cod];
     print("data is $weatherData");
-   // return weatherData;
+    // return weatherData;
   } else {
     print("err");
   }
-   return weatherData;
+  return weatherData;
 }
 
 String weatherIcon(int code) {
   if (200 <= code && code <= 232) {
     return "thunderstorm";
-  }
-  else if (300 <= code && code <= 321) {
+  } else if (300 <= code && code <= 321) {
     return "drizzle";
-  }
-  else if (500 <= code && code <= 531) {
+  } else if (500 <= code && code <= 531) {
     return "rain";
-  }
-  else if (701 <= code && code <= 781) {
+  } else if (701 <= code && code <= 781) {
     return "wind";
-  }
-  else if ( code==800 ) {
+  } else if (code == 800) {
     return "clear";
-  }
-  else if (801 <= code && code <= 804) {
+  } else if (801 <= code && code <= 804) {
     return "clouds";
-  }
-  else{
+  } else {
     return "dunno";
   }
 }

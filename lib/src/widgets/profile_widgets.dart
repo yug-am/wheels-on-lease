@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'home_screen_widgets.dart';
- TextStyle textStyleHeadline() {
-    return TextStyle(
-        color: Colors.black, fontSize: 30.0, fontWeight: FontWeight.bold);
-  }
+
+TextStyle textStyleHeadline() {
+  return TextStyle(
+      color: Colors.black, fontSize: 30.0, fontWeight: FontWeight.bold);
+}
+
 List<String> users = ['Male', 'Female'];
 String nameValidatorFunction(String value) {
   if (value.isEmpty) {
@@ -84,20 +86,25 @@ Expanded customGenderButton(
 }
 
 Theme customDropDownButton(
-    {BuildContext context, List<String> dropDownList, Function function,String selected}) {
+    {BuildContext context,
+    List<String> dropDownList,
+    Function function,
+    String selected}) {
   return Theme(
     data: Theme.of(context).copyWith(
       canvasColor: kBlueColor,
     ),
     child: DropdownButton<String>(
-      value: selected,
-        items: dropDownList.map((String dropDownItem) {
-          //map iterate for each in our list
-          return DropdownMenuItem<String>(
-            value: dropDownItem,
-            child: Text(dropDownItem),
-          );
-        },).toList(),
+        value: selected,
+        items: dropDownList.map(
+          (String dropDownItem) {
+            //map iterate for each in our list
+            return DropdownMenuItem<String>(
+              value: dropDownItem,
+              child: Text(dropDownItem),
+            );
+          },
+        ).toList(),
         onChanged: function),
   );
 }

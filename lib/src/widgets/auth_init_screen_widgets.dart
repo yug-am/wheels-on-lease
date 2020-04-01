@@ -53,14 +53,14 @@ String passValidatorFunction(String value) {
   return null;
 }
 
-TextFormField userField(
-    {@required String labelText,
-    @required String hintText,
-    bool isObscure = false,
-     @required TextEditingController textEditingController,
-    Function validatorFunction,
-    TextInputType keyboardType = TextInputType.emailAddress,
-    }) {
+TextFormField userField({
+  @required String labelText,
+  @required String hintText,
+  bool isObscure = false,
+  @required TextEditingController textEditingController,
+  Function validatorFunction,
+  TextInputType keyboardType = TextInputType.emailAddress,
+}) {
   return TextFormField(
     //controller: textEditingController,
     validator: (String value) => validatorFunction(value),
@@ -68,11 +68,10 @@ TextFormField userField(
     obscureText: isObscure,
     keyboardType: keyboardType,
     decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: TextStyle(fontSize: 20.0),
-        labelText: labelText,
-         labelStyle: TextStyle(fontSize: 20.0),
-        ),
-
+      hintText: hintText,
+      hintStyle: TextStyle(fontSize: 20.0),
+      labelText: labelText,
+      labelStyle: TextStyle(fontSize: 20.0),
+    ),
   );
 }

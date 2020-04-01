@@ -13,7 +13,7 @@ class AuthInitState extends State<AuthInitScreen> {
 
   @override
   Widget build(BuildContext context) {
-   void tapFunction(bool x) {
+    void tapFunction(bool x) {
       setState(
         () {
           if (!x) {
@@ -38,16 +38,16 @@ class AuthInitState extends State<AuthInitScreen> {
                   textButton(
                       isActive: logInActive,
                       buttonText: "Login",
-                      function:()=> tapFunction(logInActive)),
+                      function: () => tapFunction(logInActive)),
                   textButton(
                       isActive: !logInActive,
                       buttonText: "SignIn",
-                      function: ()=> tapFunction(!logInActive)),
+                      function: () => tapFunction(!logInActive)),
                 ],
               ),
             ),
             Expanded(
-              child: (logInActive)?Login():Signin(),
+              child: (logInActive) ? Login() : Signin(),
             )
           ],
         ),

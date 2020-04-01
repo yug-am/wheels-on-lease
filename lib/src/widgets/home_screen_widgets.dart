@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 const Color kBlueColor = Color.fromRGBO(2, 246, 242, 1.0);
 const Color kGreenColor = Color.fromRGBO(15, 255, 121, 1.0);
+const Color kPurpleColor = Color.fromRGBO(108, 99, 255, 1.0);
 const LinearGradient kLinearGradient = LinearGradient(
   colors: [
     kGreenColor,

@@ -1,10 +1,18 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:wheels_on_lease/src/widgets/auth_init_screen_widgets.dart';
 import 'package:wheels_on_lease/src/widgets/home_screen_widgets.dart';
- TextStyle textStyle() {
-    return TextStyle(color: Colors.black, fontSize: 20.0);
-  }
+
+import 'hide/hide.dart';
+import 'main_screen.dart';
+import 'methods/weather.dart';
+import 'model/user_data_model.dart';
+
+TextStyle textStyle() {
+  return TextStyle(color: Colors.black, fontSize: 20.0);
+}
+
 class Login extends StatefulWidget {
   LoginState createState() => LoginState();
 }
@@ -75,8 +83,27 @@ class LoginState extends State<Login> {
                             email: _emailController.text,
                             pass: _passController.text,
                             context: context);
-                        print(_user.email);
-                        print('success');
+                        //print(_user.email);
+
+                        DocumentSnapshot documentSnapshot =
+                            await userRecord.document(_user.email).get();
+
+                        Customer customer =
+                            Customer.fromDocument(documentSnapshot);
+                        List<String> weatherData =
+                            await currentWeather(cityName: customer.city);
+                        // print(customer.gender);
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MainScreen(
+                              customer: customer,
+                              weatherData: weatherData,
+                            ),
+                          ),
+                        );
+                        //print('success');
                         // Navigator.push(
                         //   context,
                         //   MaterialPageRoute(

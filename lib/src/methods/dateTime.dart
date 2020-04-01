@@ -1,7 +1,7 @@
 String getDateTime() {
   String month;
   String day;
-  
+
   DateTime _timeNow = DateTime.now();
   String date = "${_timeNow.day}";
   // x =  _timeNow.day.toString();
