@@ -1,6 +1,9 @@
+//import 'dart:js';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wheels_on_lease/src/methods/dateTime.dart';
+import 'package:wheels_on_lease/src/scan_ride.dart';
 //import 'package:wheels_on_lease/src/search.dart';
 import 'package:wheels_on_lease/src/widgets/home_screen_widgets.dart';
 import 'package:wheels_on_lease/src/widgets/main_screen_widgets.dart';
@@ -42,98 +45,104 @@ class MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        color: kGreenColor,
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          //backgroundColor: kGreenColor,
-          body: Container(
-            decoration: BoxDecoration(gradient: kLinearGradient),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.only(top: 30.0),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          customAvatar(radius: 50.0, gender: customer.gender),
-                          searchIcon(
-                            size: 30.0,
-                            function: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => SearchScreen(),
-                              //   ),
-                              // );
-                            },
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 10.0),
-                      ),
-                      mainTextColumn(
-                        heading: customHeadText(username: "${customer.name}"),
-                        //username: "test"),
-                        subText: customText(),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 10.0),
-                      ),
-                      customDateTempStack(
-                        date: date,
-                        temp: weatherData[0],
-                        status: weatherData[1],
-                        icon: weatherData[2],
-                        cityName: customer.city,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
-                        child: browseText(
+      color: kGreenColor,
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Container(
+          decoration: BoxDecoration(gradient: kLinearGradient),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(top: 30.0),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        customAvatar(radius: 50.0, gender: customer.gender),
+                        rideScanIcon(
+                          size: 30.0,
                           function: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => MapScreen(),
-                            //   ),
-                            // );
-                            print('tap');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>Material(child: MaterialApp(
+                                  debugShowCheckedModeBanner: false,
+                                  color: Colors.white,
+                                  home: ScanRide(customer: customer),
+                                ),
+                                ),
+                                // builder: (context) =>Material(child: ScanRide(customer:customer),),
+                              ),
+                            );
                           },
                         ),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10.0),
+                    ),
+                    mainTextColumn(
+                      heading: customHeadText(username: "${customer.name}"),
+                      //username: "test"),
+                      subText: customText(),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10.0),
+                    ),
+                    customDateTempStack(
+                      date: date,
+                      temp: weatherData[0],
+                      status: weatherData[1],
+                      icon: weatherData[2],
+                      cityName: customer.city,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                      child: browseText(
+                        function: () {
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => MapScreen(),
+                          //   ),
+                          // );
+                          print('tap');
+                        },
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                SizedBox(
-                  height: 220.0,
+              ),
+              SizedBox(
+                height: 220.0,
 
-                  child: VehicleListWidget(cityName: cityName),
-                  // child: ListView(
-                  //   // This next line does the trick.
-                  //   scrollDirection: Axis.horizontal,
-                  //   children: <Widget>[
+                child: VehicleListWidget(cityName: cityName),
+                // child: ListView(
+                //   // This next line does the trick.
+                //   scrollDirection: Axis.horizontal,
+                //   children: <Widget>[
 
-                  //     customVehicleCard(
-                  //         imageUrl: testUrl, isAvailable: true, location: "cp"),
-                  //         customVehicleCard(
-                  //         imageUrl: testUrl2, isAvailable: false, location: "janpath"),
-                  //         customVehicleCard(
-                  //         imageUrl: testUrl, isAvailable: true, location: "karol bagh"),
-                  //         customVehicleCard(
-                  //         imageUrl: testUrl2, isAvailable: true, location: "cp"),
-                  //   ],
-                  // ),
-                ),
-              ],
-            ),
+                //     customVehicleCard(
+                //         imageUrl: testUrl, isAvailable: true, location: "cp"),
+                //         customVehicleCard(
+                //         imageUrl: testUrl2, isAvailable: false, location: "janpath"),
+                //         customVehicleCard(
+                //         imageUrl: testUrl, isAvailable: true, location: "karol bagh"),
+                //         customVehicleCard(
+                //         imageUrl: testUrl2, isAvailable: true, location: "cp"),
+                //   ],
+                // ),
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

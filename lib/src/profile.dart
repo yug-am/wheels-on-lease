@@ -2,12 +2,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:wheels_on_lease/src/hide/hide.dart';
-//import '../src/intro_screen.dart';
 import 'package:wheels_on_lease/src/widgets/auth_init_screen_widgets.dart';
 import 'package:wheels_on_lease/src/widgets/home_screen_widgets.dart';
-//import 'package:wheels_on_lease/src/widgets/main_screen_widgets.dart';
 import 'package:wheels_on_lease/src/widgets/profile_widgets.dart';
-
 import 'login.dart';
 import 'main_screen.dart';
 import 'methods/weather.dart';

@@ -33,10 +33,10 @@ CircleAvatar customAvatar(
   );
 }
 
-IconButton searchIcon({@required double size, @required Function function}) {
+IconButton rideScanIcon({@required double size, @required Function function}) {
   return IconButton(
       icon: Icon(
-        Icons.search,
+        Icons.directions_bike,
         color: Colors.black,
         size: size,
       ),

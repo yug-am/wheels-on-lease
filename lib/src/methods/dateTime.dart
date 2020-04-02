@@ -69,3 +69,11 @@ String getDateTime() {
   String formattedDate = " $date $month, $day";
   return formattedDate;
 }
+String getTime({ DateTime dateTime}){
+  //DateTime _timeNow = DateTime.now();
+
+  String _hour  =dateTime.hour.toString();
+  String _minute = dateTime.minute.toString();
+  String formattedTime = "$_hour : $_minute";
+  return formattedTime;
+}
