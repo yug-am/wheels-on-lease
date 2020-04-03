@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:wheels_on_lease/src/hide/hide.dart';
 
 void addRide({
@@ -26,5 +26,4 @@ void addRide({
       "imageUrl": imageUrl
     },
   );
-  print('success');
 }

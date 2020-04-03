@@ -9,6 +9,10 @@ Firebase email authentication<br/>
 - Profile Screen<br/>
 - Fetch vehicles list from cloud db acc. to city<br/>
 - Scrollable List of Vehicle tiles<br/>
+- Show only Available rides on main screen<br/>
+- Scan to Ride<br/>
+- End ride ,report problems in vehicle <br/>
+- Ride records are saved in cloud firestore <br/>
 
 
 <div class="img-with-text">

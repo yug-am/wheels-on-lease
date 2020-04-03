@@ -1,6 +1,8 @@
-#private ignore
+#-------private ignore
 lib/src/hide/
 lib/src/private/
+#-------save space off repo;
+assets/new_assets/
 # Miscellaneous
 *.class
 *.log

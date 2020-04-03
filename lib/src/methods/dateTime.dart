@@ -4,7 +4,6 @@ String getDateTime() {
 
   DateTime _timeNow = DateTime.now();
   String date = "${_timeNow.day}";
-  // x =  _timeNow.day.toString();
   switch (_timeNow.month) {
     case 1:
       month = "January";
@@ -70,8 +69,6 @@ String getDateTime() {
   return formattedDate;
 }
 String getTime({ DateTime dateTime}){
-  //DateTime _timeNow = DateTime.now();
-
   String _hour  =dateTime.hour.toString();
   String _minute = dateTime.minute.toString();
   String formattedTime = "$_hour : $_minute";

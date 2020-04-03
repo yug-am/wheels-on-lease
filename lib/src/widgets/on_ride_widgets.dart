@@ -5,11 +5,12 @@ import 'package:wheels_on_lease/src/widgets/scanRideWidget.dart';
 
 Container rideScreenColumn(
     {String imageUrl,
+    bool onRide= true,
     String modelno,
     String location,
     String vehicleType,
     String time,
-    Widget probBtn}) {
+    Widget probBtn, Function function}) {
   return Container(
     color: Colors.white,
     child: Column(
@@ -23,7 +24,7 @@ Container rideScreenColumn(
             padding: EdgeInsets.only(top: 30.0),
             child: Center(
               child: Text(
-                "On Ride",
+                (onRide)?"On Ride":"Ride Ended",
                 style: TextStyle(
                   decoration: TextDecoration.none,
                   fontSize: 30.0,
@@ -42,7 +43,7 @@ Container rideScreenColumn(
               children: <Widget>[
                 Center(
                   child: CircleAvatar(
-                    //child: Image.network(imageUrl),
+
                     backgroundImage: NetworkImage(imageUrl),
                     radius: 80.0,
                   ),
@@ -84,7 +85,7 @@ Container rideScreenColumn(
             ),
           ),
         ),
-        rideButton(text: "End Ride"),
+        rideButton(text:(onRide)? "End Ride":"Done",function: function),
       ],
     ),
   );

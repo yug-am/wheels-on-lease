@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
+import 'package:wheels_on_lease/src/model/ride_model.dart';
+import 'package:wheels_on_lease/src/model/vehicle_model.dart';
 import 'package:wheels_on_lease/src/widgets/main_screen_widgets.dart';
 import 'package:wheels_on_lease/src/widgets/on_ride_widgets.dart';
+import 'main_screen.dart';
+import 'methods/weather.dart';
+import 'model/user_data_model.dart';
 
-//import 'methods/vehicleHandle.dart';
-class RideEndScreen extends StatefulWidget {
-  RideEndScreenState createState() => RideEndScreenState();
+class RideEndProbScreen extends StatefulWidget {
+  RideEndProbScreen({this.customer, this.vehicle, this.ride});
+  final Customer customer;
+  final Vehicle vehicle;
+  final Ride ride;
+  RideEndProbScreenState createState() =>
+      RideEndProbScreenState(customer: customer, vehicle: vehicle, ride: ride);
 }
 
-class RideEndScreenState extends State<RideEndScreen> {
+class RideEndProbScreenState extends State<RideEndProbScreen> {
+  RideEndProbScreenState({this.customer, this.vehicle, this.ride});
+  final Customer customer;
+  final Vehicle vehicle;
+  final Ride ride;
   String data;
   @override
   void initState() {
@@ -47,14 +59,21 @@ class RideEndScreenState extends State<RideEndScreen> {
               ),
               rideButton(
                   text: "Back to home page",
-                  function: () {
-                    SchedulerBinding.instance.addPostFrameCallback((_) {
-                      int count = 0;
-                      Navigator.popUntil(context, (route) {
-                        return count++ == 5;
-                      });
-                    });
-                  })
+                  function: () async{
+                    List<String> weatherData =
+                              await currentWeather(cityName: customer.city);
+
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MainScreen(
+                                customer: customer,
+                                weatherData: weatherData,
+                              ),
+                            ),
+                          );
+                    
+                  },)
             ],
           ),
         ),

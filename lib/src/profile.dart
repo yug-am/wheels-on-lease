@@ -1,4 +1,4 @@
-//import 'package:flutter/cupertino.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:wheels_on_lease/src/hide/hide.dart';
@@ -28,7 +28,7 @@ class ProfileState extends State<Profile> {
   TextEditingController _nameController = TextEditingController();
   TextEditingController _ageController = TextEditingController();
   userLogin({String email, String pass, BuildContext context}) {
-    print("x");
+
   }
 
   String selectedCity = cities[0];
@@ -124,7 +124,6 @@ class ProfileState extends State<Profile> {
                   child: customHomeScreenButton(
                       buttonText: 'Submit',
                       function: () async {
-                        print(selectedCity);
                         if (_formKey.currentState.validate()) {
                           userRecord.document(customerEmail).setData(
                             {
@@ -133,13 +132,13 @@ class ProfileState extends State<Profile> {
                               "age": _ageController.text,
                               "city": selectedCity,
                               "email": customerEmail,
+                              "onRide": false,
+                              "activeRide": "nil"
                             },
                           );
-
                           documentSnapshot =
                               await userRecord.document(customerEmail).get();
                           customer = Customer.fromDocument(documentSnapshot);
-                          print(customer.gender);
                           weatherData =
                               await currentWeather(cityName: customer.city);
 

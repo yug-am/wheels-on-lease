@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:wheels_on_lease/src/widgets/home_screen_widgets.dart';
-//import 'package:cached_network_image/cached_network_image.dart';
 
 const double fontSize = 20;
 TextStyle customTextStyle({bool isBold = false}) {
@@ -33,10 +31,10 @@ CircleAvatar customAvatar(
   );
 }
 
-IconButton rideScanIcon({@required double size, @required Function function}) {
+IconButton rideScanIcon({@required double size, @required Function function,IconData icon}) {
   return IconButton(
       icon: Icon(
-        Icons.directions_bike,
+        icon,
         color: Colors.black,
         size: size,
       ),
@@ -50,9 +48,9 @@ Text customHeadText({@required String username}) {
   );
 }
 
-Text customText() {
+Text customText({@required bool onRide }) {
   return Text(
-    "Wanna take a ride today?",
+   (onRide)? "Ride Joyfully,Ride Responsibly":"Wanna take a ride today?",
     style: customTextStyle(),
   );
 }
@@ -100,11 +98,7 @@ Container customDateTempStack(
                       width: containerHeight / 2,
                       fit: BoxFit.fill,
                     ),
-                    // child: Icon(
-                    //   Icons.wb_sunny,
-                    //   color: Colors.yellow,
-                    //   size: containerHeight / 2,
-                    // ),
+                    
                   ),
                   customTempText(
                       temp: temp, cityName: cityName, status: status),
@@ -172,108 +166,16 @@ Row browseText({@required Function function}) {
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: <Widget>[
       Text(
-        "Near You",
+        "Avialble Rides",
         style: customTextStyle(isBold: true),
       ),
       InkWell(
           onTap: function,
           child: Text(
-            "Browse Map >",
+            "Browse Rides >",
             style: customTextStyle(),
           ))
     ],
   );
 }
 
-// Container vehicleCard() {
-//   double containerHeight = 210.0;
-//   return Container(
-//     width: containerHeight * (1.1),
-//     height: containerHeight,
-//     child: Stack(
-//       children: <Widget>[
-//         Container(
-//             decoration: BoxDecoration(
-//               borderRadius: BorderRadius.circular(40.0),
-//               color: Colors.white,
-//             ),
-//             alignment: Alignment.center,
-//             child: Padding(
-//               padding: EdgeInsets.symmetric(horizontal: 5.0),
-//               child: Row(
-//                 //crossAxisAlignment: CrossAxisAlignment.start,
-//                 //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                 children: <Widget>[
-//                   Padding(
-//                     padding: EdgeInsets.only(
-//                       top: 1.0,
-//                     ),
-//                     child: Center(
-//                       child: Image.asset(
-//                         'assets/vehicle.png',
-//                         height: containerHeight * (0.75),
-//                         width: containerHeight * (1),
-//                       ),
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//             )),
-//         Align(
-//           alignment: Alignment(-0.90, 0.25),
-//           child: SizedBox(
-//             //  width: double.infinity,
-//             child: Container(
-//               decoration: BoxDecoration(
-//                 borderRadius: BorderRadius.circular(20.0),
-//                 color: kGreenColor,
-//               ),
-//               // height: (containerHeight) / 4,
-//               child: Padding(
-//                 padding: EdgeInsets.symmetric(
-//                   horizontal: 10.0,
-//                   vertical: 5.0,
-//                 ),
-//                 child: Text(
-//                   "Distance 150M",
-//                   style: TextStyle(fontSize: fontSize),
-//                   textAlign: TextAlign.center,
-//                 ),
-//               ),
-//             ),
-//           ),
-//         ),
-//         Align(
-//           alignment: Alignment.bottomLeft,
-//           child: customVehicleText(),
-//         ),
-//       ],
-//     ),
-//   );
-// }
-
-// Padding customVehicleText() {
-//   double size = 20.0;
-//   return Padding(
-//     padding: EdgeInsets.all(10.0),
-//     child: RichText(
-//       text: TextSpan(
-//         text: "Cannaught Place\n",
-//         style: TextStyle(
-//           color: Colors.black,
-//           fontSize: size,
-//         ),
-//         children: [
-//           TextSpan(
-//             text: '1 Available',
-//             style: TextStyle(
-//               fontWeight: FontWeight.bold,
-//               color: Colors.black,
-//               fontSize: size,
-//             ),
-//           ),
-//         ],
-//       ),
-//     ),
-//   );
-// }

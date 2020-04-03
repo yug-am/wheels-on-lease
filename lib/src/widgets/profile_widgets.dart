@@ -60,7 +60,6 @@ Expanded customGenderButton(
         ),
         child: InkWell(
           onTap: function,
-          // onDoubleTap:()=> print("2tap"),
           child: Column(children: <Widget>[
             Image.asset(
               'assets/gender/$buttonGender.png',

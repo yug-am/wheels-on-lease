@@ -83,7 +83,7 @@ class LoginState extends State<Login> {
                             email: _emailController.text,
                             pass: _passController.text,
                             context: context);
-                        //print(_user.email);
+                        
 
                         DocumentSnapshot documentSnapshot =
                             await userRecord.document(_user.email).get();
@@ -92,7 +92,6 @@ class LoginState extends State<Login> {
                             Customer.fromDocument(documentSnapshot);
                         List<String> weatherData =
                             await currentWeather(cityName: customer.city);
-                        // print(customer.gender);
 
                         Navigator.push(
                           context,
@@ -103,13 +102,6 @@ class LoginState extends State<Login> {
                             ),
                           ),
                         );
-                        //print('success');
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => MainScreen(_user),
-                        //   ),
-                        // );
                       }
                     }),
               )

@@ -20,5 +20,4 @@ void addVehicle({
       "imageUrl": imageUrl
     },
   );
-  print('success');
 }

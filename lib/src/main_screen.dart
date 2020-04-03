@@ -1,18 +1,19 @@
-//import 'dart:js';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wheels_on_lease/src/methods/dateTime.dart';
+import 'package:wheels_on_lease/src/model/vehicle_model.dart';
 import 'package:wheels_on_lease/src/scan_ride.dart';
-//import 'package:wheels_on_lease/src/search.dart';
 import 'package:wheels_on_lease/src/widgets/home_screen_widgets.dart';
 import 'package:wheels_on_lease/src/widgets/main_screen_widgets.dart';
 import 'package:wheels_on_lease/src/widgets/vehicleListWidget.dart';
 
-//import 'map_screen.dart';
-//import 'methods/weather.dart';
+
+import 'hide/hide.dart';
+import 'model/ride_model.dart';
 import 'model/user_data_model.dart';
-//import 'widgets/vehicle_card.dart';
+import 'on_ride.dart';
 
 class MainScreen extends StatefulWidget {
   MainScreen({this.customer, this.weatherData});
@@ -23,22 +24,22 @@ class MainScreen extends StatefulWidget {
 }
 
 class MainScreenState extends State<MainScreen> {
-  String testUrl = "https://i.picsum.photos/id/304/200/200.jpg";
-  String testUrl2 = "https://i.picsum.photos/id/15/200/300.jpg";
-  Customer customer;
-  List<String> weatherData;
+  //String testUrl = "https://i.picsum.photos/id/304/200/200.jpg";
+  // String testUrl2 = "https://i.picsum.photos/id/15/200/300.jpg";
   MainScreenState({this.customer, this.weatherData});
-  String x;
+  final Customer customer;
+  List<String> weatherData;
   String cityName;
-
   String date;
-  bool refreshed;
-  //String sampleDpUrl = "https://i.picsum.photos/id/336/200/200.jpg";
+  DocumentSnapshot documentSnapshot;
+  Ride ride;
+  Vehicle vehicle;
+  bool onRide;
   @override
   void initState() {
     date = getDateTime();
     cityName = this.customer.city;
-    // print('here $cityName');
+    onRide = customer.onRide;
     super.initState();
   }
 
@@ -65,23 +66,64 @@ class MainScreenState extends State<MainScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         customAvatar(radius: 50.0, gender: customer.gender),
-                        rideScanIcon(
-                          size: 30.0,
-                          function: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>Material(child: MaterialApp(
-                                  debugShowCheckedModeBanner: false,
-                                  color: Colors.white,
-                                  home: ScanRide(customer: customer),
-                                ),
-                                ),
-                                // builder: (context) =>Material(child: ScanRide(customer:customer),),
+                        (onRide)
+                            ? rideScanIcon(
+                                icon: Icons.directions_car,
+                                size: 60.0,
+                                function: () async {
+                                  documentSnapshot = await rideRecord
+                                      .document(customer.email)
+                                      .collection("rides")
+                                      .document(customer.activeRide)
+                                      .get();
+
+                                  ride = Ride.fromDocument(documentSnapshot);
+                                  String city = customer.city.toLowerCase();
+                                  DocumentSnapshot documentSnapshot1 =
+                                      await vehicleRecord
+                                          .document('$city')
+                                          .collection('$city' 'Vehicles')
+                                          .document("${ride.regNo.toString()}")
+                                          .get();
+                                  vehicle =
+                                      Vehicle.fromDocuments(documentSnapshot1);
+                                  
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Material(
+                                        child: OnRide(
+                                          customer: customer,
+                                          vehicle: vehicle,
+                                          ride: ride,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              )
+                            : rideScanIcon(
+                                icon: Icons.camera_enhance,
+                                size: 60.0,
+                                function: (onRide)
+                                    ? () => print("tap")
+                                    : () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => Material(
+                                              child: MaterialApp(
+                                                debugShowCheckedModeBanner:
+                                                    false,
+                                                color: Colors.white,
+                                                home: ScanRide(
+                                                    customer: customer),
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
                               ),
-                            );
-                          },
-                        ),
                       ],
                     ),
                     Padding(
@@ -89,8 +131,7 @@ class MainScreenState extends State<MainScreen> {
                     ),
                     mainTextColumn(
                       heading: customHeadText(username: "${customer.name}"),
-                      //username: "test"),
-                      subText: customText(),
+                      subText: customText(onRide: onRide),
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 10.0),
@@ -106,12 +147,7 @@ class MainScreenState extends State<MainScreen> {
                       padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
                       child: browseText(
                         function: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => MapScreen(),
-                          //   ),
-                          // );
+                      
                           print('tap');
                         },
                       ),
@@ -121,23 +157,7 @@ class MainScreenState extends State<MainScreen> {
               ),
               SizedBox(
                 height: 220.0,
-
                 child: VehicleListWidget(cityName: cityName),
-                // child: ListView(
-                //   // This next line does the trick.
-                //   scrollDirection: Axis.horizontal,
-                //   children: <Widget>[
-
-                //     customVehicleCard(
-                //         imageUrl: testUrl, isAvailable: true, location: "cp"),
-                //         customVehicleCard(
-                //         imageUrl: testUrl2, isAvailable: false, location: "janpath"),
-                //         customVehicleCard(
-                //         imageUrl: testUrl, isAvailable: true, location: "karol bagh"),
-                //         customVehicleCard(
-                //         imageUrl: testUrl2, isAvailable: true, location: "cp"),
-                //   ],
-                // ),
               ),
             ],
           ),

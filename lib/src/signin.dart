@@ -76,8 +76,6 @@ class SigninState extends State<Signin> {
                             pass: _passController.text,
                             context: context);
                         String userEmail = _user.email;
-                        print(_user.email);
-                        print('success');
                         Navigator.push(
                           context,
                           MaterialPageRoute(

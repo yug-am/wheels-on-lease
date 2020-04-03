@@ -10,19 +10,14 @@ Future<List<String>> currentWeather({String cityName = "Delhi"}) async {
   httpResponse = await http.get(
       'http://api.openweathermap.org/data/2.5/weather?q=$cityName&appid=$api');
   if (httpResponse.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
     String rawJson = httpResponse.body;
     Map<String, dynamic> weatherMap = await jsonDecode(rawJson);
     String temp = (((weatherMap['main']['temp']) - 273.15).round()).toString();
     String weatherStatus = weatherMap["weather"][0]["main"];
-    //int status = weatherMap['cod'];
     String cod = weatherMap["weather"][0]["icon"];
     weatherData = [temp, weatherStatus, cod];
-    print("data is $weatherData");
-    // return weatherData;
   } else {
-    print("err");
+    print("e");
   }
   return weatherData;
 }

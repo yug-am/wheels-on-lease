@@ -81,7 +81,7 @@ Container rideScreenColumn(
             ),
           ),
         ),
-        (isAvailable)?rideButton(text:"Available",function:function ):rideButton(text:"Not Availble",function:()=>print("x")),
+        (isAvailable)?rideButton(text:"Available",function:function ):rideButton(text:"Not Availble",function:()=>print("tap")),
       ],
     ),
   );

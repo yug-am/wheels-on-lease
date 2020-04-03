@@ -28,10 +28,10 @@ dependencies:
   intro_slider: ^2.2.9
   cloud_firestore: ^0.13.4+2
   qrscan: ^0.2.17
-  image_gallery_saver: ^1.2.2
-  image_picker: ^0.6.4
-  #cached_network_image: ^2.0.0
-  
+  uuid: 2.0.4
+  #image_gallery_saver: ^1.2.2
+  #image_picker: ^0.6.4
+  #cached_network_image: ^2.0.0  
   #qr_flutter: ^3.1.0
   #mapbox_gl: ^0.0.5
   #google_maps_flutter: ^0.5.25+2
@@ -56,6 +56,7 @@ flutter:
   assets:
     - assets/
     - assets/gender/
+    - assets/new_assets/
  #   - images/
   #  - images/a_dot_ham.jpeg
 
