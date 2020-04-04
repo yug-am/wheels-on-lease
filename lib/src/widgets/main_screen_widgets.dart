@@ -16,7 +16,7 @@ TextStyle customTextStyleHeadline() {
 }
 
 CircleAvatar customAvatar(
-    {@required double radius, String imageUrl, String gender}) {
+    {@required double radius, String imageUrl, String gender,}) {
   return CircleAvatar(
     radius: (radius + 3),
     backgroundColor: Colors.white,
@@ -26,7 +26,7 @@ CircleAvatar customAvatar(
         'assets/gender/$gender.png',
         fit: BoxFit.fill,
       ),
-      backgroundColor: Colors.white, //kPurpleColor,
+      backgroundColor: Colors.white, 
     ),
   );
 }

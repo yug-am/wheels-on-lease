@@ -17,8 +17,6 @@ class VehicleListWidgetState extends State<VehicleListWidget> {
   List<Vehicle> vehicleList = [];
   String cityName;
   VehicleListWidgetState({this.cityName});
-  //var x;
-  //String testUrl = "https://i.picsum.photos/id/304/200/200.jpg";
 
   Future<List<Vehicle>> getVehicles({String cityName}) async {
     String _city = cityName.toLowerCase();

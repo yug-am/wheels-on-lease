@@ -62,7 +62,7 @@ TextFormField userField({
   TextInputType keyboardType = TextInputType.emailAddress,
 }) {
   return TextFormField(
-    //controller: textEditingController,
+
     validator: (String value) => validatorFunction(value),
     controller: textEditingController,
     obscureText: isObscure,

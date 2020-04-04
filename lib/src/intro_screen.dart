@@ -1,4 +1,3 @@
-//import 'package:flutter/cupertino.dart';
 import 'package:intro_slider/intro_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_slider/slide_object.dart';
@@ -8,6 +7,8 @@ class IntroScreen extends StatefulWidget {
 }
 
 class IntroScreenState extends State<IntroScreen> {
+  get onDonePress => null;
+
   static TextStyle textStyle() {
     return TextStyle(color: Colors.black, fontSize: 20.0);
   }
@@ -53,10 +54,6 @@ class IntroScreenState extends State<IntroScreen> {
         backgroundColor: Colors.white,
       ),
     );
-  }
-
-  void onDonePress() {
-    // Do what you want
   }
 
   @override

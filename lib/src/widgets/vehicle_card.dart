@@ -1,8 +1,7 @@
-//import 'package:cached_network_image/cached_network_image.dart';
+
 import 'package:flutter/material.dart';
 
 import 'home_screen_widgets.dart';
-//import 'main_screen_widgets.dart';
 
 Padding customVehicleCard(
     {String imageUrl, bool isAvailable, String location, String vehicleType}) {
@@ -12,11 +11,9 @@ Padding customVehicleCard(
     padding: EdgeInsets.symmetric(horizontal: 10.0),
     child: Container(
       decoration: BoxDecoration(
-        // color: Colors.green,
         color: Colors.white,
         borderRadius: BorderRadius.circular(15.0),
       ),
-      //color: Colors.green,
       height: containerHeight,
       width: containerWidth,
       child: Column(
@@ -38,7 +35,6 @@ Padding customVehicleCard(
               borderRadius: BorderRadius.circular(20.0),
               color: (isAvailable) ? kGreenColor : Colors.red,
             ),
-            // height: (containerHeight) / 4,
             child: Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: 5.0,

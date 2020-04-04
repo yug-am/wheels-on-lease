@@ -16,7 +16,7 @@ import 'model/vehicle_model.dart';
 class ScanRide extends StatefulWidget {
   ScanRide({this.customer});
   final Customer customer;
-  ScanRideState createState() => ScanRideState(customer: customer); //
+  ScanRideState createState() => ScanRideState(customer: customer); 
 }
 
 class ScanRideState extends State<ScanRide> {

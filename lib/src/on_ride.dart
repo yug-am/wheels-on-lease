@@ -66,7 +66,7 @@ class OnRideState extends State<OnRide> {
             icon: Icons.lock,
             text: "not unlocking",
             function: () async {
-              //           
+                        
               await createRideRecordEndProb(
                   timeStampEnd: timeNow,
                   vehicle: vehicle,

@@ -1,14 +1,13 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wheels_on_lease/src/location_screen.dart';
 import 'package:wheels_on_lease/src/methods/dateTime.dart';
 import 'package:wheels_on_lease/src/model/vehicle_model.dart';
 import 'package:wheels_on_lease/src/scan_ride.dart';
 import 'package:wheels_on_lease/src/widgets/home_screen_widgets.dart';
 import 'package:wheels_on_lease/src/widgets/main_screen_widgets.dart';
 import 'package:wheels_on_lease/src/widgets/vehicleListWidget.dart';
-
 
 import 'hide/hide.dart';
 import 'model/ride_model.dart';
@@ -24,8 +23,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class MainScreenState extends State<MainScreen> {
-  //String testUrl = "https://i.picsum.photos/id/304/200/200.jpg";
-  // String testUrl2 = "https://i.picsum.photos/id/15/200/300.jpg";
   MainScreenState({this.customer, this.weatherData});
   final Customer customer;
   List<String> weatherData;
@@ -87,7 +84,7 @@ class MainScreenState extends State<MainScreen> {
                                           .get();
                                   vehicle =
                                       Vehicle.fromDocuments(documentSnapshot1);
-                                  
+
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -147,8 +144,14 @@ class MainScreenState extends State<MainScreen> {
                       padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
                       child: browseText(
                         function: () {
-                      
-                          print('tap');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Material(
+                                child: LocationScreen(customer: customer,),
+                              ),
+                            ),
+                          );
                         },
                       ),
                     ),

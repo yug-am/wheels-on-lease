@@ -51,7 +51,6 @@ Container rideScreenColumn(
               children: <Widget>[
                 Center(
                   child: CircleAvatar(
-                    //child: Image.network(imageUrl),
                     backgroundImage: NetworkImage(imageUrl),
                     radius: 80.0,
                   ),

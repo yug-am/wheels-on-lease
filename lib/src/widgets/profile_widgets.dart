@@ -45,7 +45,6 @@ Expanded customGenderButton(
     {@required String buttonGender,
     @required String currentGender,
     Function function}) {
-  //Function genderSelectFunction(String buttonGender,String selectedGender){
   return Expanded(
     child: Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
@@ -55,7 +54,7 @@ Expanded customGenderButton(
             color: (buttonGender == currentGender) ? Colors.black : kGreenColor,
             width: 3.0,
           ),
-          borderRadius: BorderRadius.circular(15.0), //
+          borderRadius: BorderRadius.circular(15.0), 
           color: kGreenColor,
         ),
         child: InkWell(
@@ -97,7 +96,6 @@ Theme customDropDownButton(
         value: selected,
         items: dropDownList.map(
           (String dropDownItem) {
-            //map iterate for each in our list
             return DropdownMenuItem<String>(
               value: dropDownItem,
               child: Text(dropDownItem),
