@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:wheels_on_lease/src/widgets/home_screen_widgets.dart';
 import 'package:wheels_on_lease/src/widgets/main_screen_widgets.dart';
 
-SizedBox decoHeader({double height = 200.0}) {
+SizedBox decoHeader(
+    {double height = 200.0, String customerGender, String customerName}) {
   return SizedBox(
     height: height,
     child: Container(
@@ -15,14 +16,14 @@ SizedBox decoHeader({double height = 200.0}) {
           ),
           Center(
             child: customAvatar(
-              gender: "Male",
+              gender: customerGender,
               radius: (height / 4),
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: height / 20,bottom: height/10),
+            padding: EdgeInsets.only(top: height / 20, bottom: height / 10),
             child: Text(
-              "Name",
+              customerName,
               style: TextStyle(
                 fontSize: 30.0,
               ),
@@ -47,44 +48,52 @@ Container roundedContainer({Widget child}) {
   );
 }
 
-ListView customList(
-    {Widget widget1,
-    Widget widget2,
-    Widget widget3,
-    Widget widget4,
-    Widget widget5}) {
+ListView customList({
+  Widget widget0,
+  Widget widget1,
+  Widget widget2,
+  Widget widget3,
+  Widget widget4,
+  Widget widget5,
+}) {
   return ListView(
-    children: <Widget>[widget1, widget2, widget3, widget4, widget5],
+    children: <Widget>[widget0, widget1, widget2, widget3, widget4, widget5],
   );
 }
 
-Padding optionTile({String text, double fontSize = 20.0}) {
-  return Padding(
-    padding: EdgeInsets.symmetric(
-      vertical: 8.0,
-      horizontal: 20.0,
-    ),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Text(
-          text,
-          style: TextStyle(fontSize: fontSize,fontWeight: FontWeight.w500),
-        ),
-        Padding(padding: EdgeInsets.only(top:8.0),child:SizedBox(
-          height: 2.0,
-          child: Container(
-            color: Colors.black12,
-          ),
-        ))
-      ],
-    ),
-  );
-}
-
-InkWell logOutButton({@required double size}) {
+InkWell optionTile({String text, double fontSize = 20.0,Function function }) {
   return InkWell(
-    onTap: () => print("tap"),
+    onTap: function,
+    child: Padding(
+      padding: EdgeInsets.symmetric(
+        vertical: 8.0,
+        horizontal: 20.0,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            text,
+            style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.w500),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 8.0),
+            child: SizedBox(
+              height: 2.0,
+              child: Container(
+                color: Colors.black12,
+              ),
+            ),
+          )
+        ],
+      ),
+    ),
+  );
+}
+
+InkWell logOutButton({@required double size, Function function}) {
+  return InkWell(
+    onTap: function,
     child: SizedBox(
       height: (size * 3),
       child: Container(

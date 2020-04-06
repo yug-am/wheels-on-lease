@@ -4,16 +4,15 @@
 
 ## features
 
-Firebase email authentication<br/>
-- Main Screen UI<br/>
-- Profile Screen<br/>
+- Firebase email authentication<br/>
+- Show weather acc. to user city  <br/>
 - Fetch vehicles list from cloud db acc. to city<br/>
 - Scrollable List of Vehicle tiles<br/>
 - Show only Available rides on main screen<br/>
 - Scan to Ride<br/>
 - End ride ,report problems in vehicle <br/>
 - Ride records are saved in cloud firestore <br/>
-
+- Browse rides acc. to locations <br/>
 
 <div class="img-with-text">
     <img src="img_README/login.png"   width="300" />

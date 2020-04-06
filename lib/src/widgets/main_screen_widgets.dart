@@ -35,7 +35,7 @@ IconButton rideScanIcon({@required double size, @required Function function,Icon
   return IconButton(
       icon: Icon(
         icon,
-        color: Colors.black,
+        color: Colors.white,
         size: size,
       ),
       onPressed: function);

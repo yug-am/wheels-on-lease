@@ -3,7 +3,6 @@ import 'package:wheels_on_lease/src/model/vehicle_model.dart';
 import 'package:wheels_on_lease/src/widgets/home_screen_widgets.dart';
 import 'package:wheels_on_lease/src/widgets/location_vehicle_widgets.dart';
 import 'model/location_model.dart';
-import 'package:wheels_on_lease/src/widgets/vehicle_card.dart';
 
 class LocationVehicle extends StatefulWidget {
   LocationVehicle({this.location, this.vehicleList});

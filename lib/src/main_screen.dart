@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:wheels_on_lease/src/location_screen.dart';
 import 'package:wheels_on_lease/src/methods/dateTime.dart';
 import 'package:wheels_on_lease/src/model/vehicle_model.dart';
+import 'package:wheels_on_lease/src/option_screen.dart';
 import 'package:wheels_on_lease/src/scan_ride.dart';
 import 'package:wheels_on_lease/src/widgets/home_screen_widgets.dart';
 import 'package:wheels_on_lease/src/widgets/main_screen_widgets.dart';
 import 'package:wheels_on_lease/src/widgets/vehicleListWidget.dart';
-
 import 'hide/hide.dart';
 import 'model/ride_model.dart';
 import 'model/user_data_model.dart';
@@ -63,9 +63,23 @@ class MainScreenState extends State<MainScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         customAvatar(radius: 50.0, gender: customer.gender),
+                        rideScanIcon(icon:Icons.settings_applications,size: 60.0, function: (){Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Material(
+                                        color: kGreenColor,
+                                        child: OptionScreen(
+                                          customer: customer,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
                         (onRide)
                             ? rideScanIcon(
                                 icon: Icons.directions_car,
+                                
                                 size: 60.0,
                                 function: () async {
                                   documentSnapshot = await rideRecord
